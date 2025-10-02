@@ -8,6 +8,8 @@ def pars(url): #функция парсит таблицу
     table = r.text.lower()
     return table
 
+#ееврпрп
+
 def english(table, chatid):
     lastname = users[chatid]['name']
     for a in table.split('\n'):
