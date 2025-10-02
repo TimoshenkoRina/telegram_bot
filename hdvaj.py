@@ -9,6 +9,7 @@ def pars(url): #функция парсит таблицу
     return table
 
 #ееврпрп
+#jhfhjksf
 
 def english(table, chatid):
     lastname = users[chatid]['name']
