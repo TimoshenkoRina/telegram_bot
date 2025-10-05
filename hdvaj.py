@@ -103,7 +103,7 @@ def z(predmet):
 
 from telebot import *
 
-bot = telebot.TeleBot('8325763973:AAFOr4FwgtZTrXATle2tkqYBms_W7WAASNo')
+bot = telebot.TeleBot()
 
 bot.delete_webhook()
 
@@ -426,5 +426,6 @@ def handle_reply_buttons(message):
         bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=H_time())
     elif answers[message.text]['keyboard'] == 'H_Teachers':
         bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=H_Teachers())
+
 
 bot.polling()
