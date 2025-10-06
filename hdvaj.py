@@ -143,15 +143,30 @@ def H_Types():
 
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,      # автоматическое изменение размера
-        row_width=2,              # количество кнопок в строке
+        row_width=3,              # количество кнопок в строке
         one_time_keyboard=True    # скрыть после использования
     )
 
     markup = types.ReplyKeyboardMarkup(row_width=3)
     btn1 = types.KeyboardButton("России и мира")
     btn2 = types.KeyboardButton("Реформы и реформаторы")
+    btn3 = types.KeyboardButton("Современные международные отношения")
     markup.add(btn1)
     markup.add(btn2)
+    markup.add(btn3)
+    return markup
+
+def IRS_Potok():
+
+    markup = types.ReplyKeyboardMarkup(
+        resize_keyboard=True,      # автоматическое изменение размера
+        row_width=1,              # количество кнопок в строке
+        one_time_keyboard=True    # скрыть после использования
+    )
+
+    markup = types.ReplyKeyboardMarkup(row_width=3)
+    btn1 = types.KeyboardButton("ирс 3.1")
+    markup.add(btn1)
     return markup
 
 def H_Teachers():
@@ -313,6 +328,20 @@ answers = {
         "keyboard": "H_time",
         "start": "history"
     },
+    "Современные международные отношения": {
+        "new": 1,
+        "address": " современные международные отношения",
+        "answer": "Теперь выберите поток",
+        "keyboard": "IRS_Potok",
+        "start": "history"
+    },
+
+    "ирс 3.1": {
+        "new": 2,
+        "address": " 3.1",
+        "answer": "Супер! вот ваши баллы:",
+        "start": "history"
+    },
 
     "8:10":  {
         "new": 1,
@@ -425,5 +454,7 @@ def handle_reply_buttons(message):
         bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=H_time())
     elif answers[message.text]['keyboard'] == 'H_Teachers':
         bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=H_Teachers())
+    elif answers[message.text]['keyboard'] == 'IRS_Potok':
+        bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=IRS_Potok())
 
 bot.polling()
