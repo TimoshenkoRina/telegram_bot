@@ -31,7 +31,7 @@ def history(table, chatid):
 
         if lastname in a:
             a=a.split(',')
-            return 'история', a[-2]
+            return a[-2]
 
     return 'ты не в этой группе'
 
@@ -43,10 +43,10 @@ def irs(table, chatid):
         if lastname in a:
 
             a = [a for a in a.split(',') if a != 'н']
+
             return sum(int(a) for a in a[1:-1])
 
     return 'ты не в этой группе'
-
 
 def org(table, chatid):
     lastname = users[chatid]['name']
@@ -55,32 +55,18 @@ def org(table, chatid):
         if lastname in a:
 
             a = a[12:]
-            a=a.split(',')
-            summ=[int(c) for c in a if c.isdigit()]
-
-            return 'орг', sum(summ)
+            a = a.split(',')
+            return int(a[9]) + int(a[10])
 
     return 'ты не в этой группе'
 
-def ifs(s):
-    try:
-        float(s)
-        return True
-    except ValueError:
-        return False
 def menedgment(table, chatid):
     lastname = users[chatid]['name']
     for a in table.split('\n'):
 
         if lastname in a:
-            a = a[-8:]
-            a = a.replace(',', '.').split('"')
-            total = 0
-            for item in a:
-                cleaned = item.strip()  # убираем пробелы и спецсимволы
-                if cleaned and ifs(cleaned):  # проверяем, что строка состоит только из цифр
-                    total += float(cleaned)
-            return 'менеджмент', total
+            a = a.split('"')
+            return a[-2]
 
     return 'ты не в этой группе'
 
