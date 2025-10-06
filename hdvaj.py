@@ -1,4 +1,6 @@
 import requests
+from telebot import *
+
 
 def pars(url): #функция парсит таблицу
     url = f'{url}'
@@ -12,16 +14,13 @@ def english(table, chatid):
     lastname = users[chatid]['name']
     for a in table.split('\n'):
         if lastname in a:
+
             a = a[6:]
-            sum_ball = []
-            for b in a.split(','):
-                sum_ball.append(b)
-            total = 0
-            for item in sum_ball:
-                cleaned = item.strip()  # убираем пробелы и спецсимволы
-                if cleaned and cleaned.isdigit():  # проверяем, что строка состоит только из цифр
-                    total += int(cleaned)
-            return 'английский', total
+            a = a.split('"')
+            s1 = float(a[0].count('1'))
+            s2 = float(a[1].replace(',', '.'))
+            s3 = float((a[4].split(',')[-2]).replace(',', '.'))
+            return s1 + s2 + s3
 
     return 'ты не в этой группе'
 
@@ -99,8 +98,6 @@ def z(predmet):
         if url[i][0]==predmet:
             return url[i][1]
     return predmet
-
-from telebot import *
 
 bot = telebot.TeleBot('token')
 
