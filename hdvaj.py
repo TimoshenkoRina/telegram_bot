@@ -34,7 +34,22 @@ def history(table, chatid):
 
     return 'ты не в этой группе'
 
-def irs(table, chatid):
+
+def irr(table, chatid):
+    lastname = users[chatid]['name']
+    for a in table.split('\n'):
+        if lastname in a:
+            sum = 0
+            for item in a:
+                if item and item.replace('.', '').replace('-', '').isdigit():
+                    sum += int(item)
+
+            return sum
+
+    return 'ты не в этой группе'
+
+
+def irs(table, chatid): #история современных международных отношений
     lastname = users[chatid]['name']
     table=table.replace('сул́има', 'сулима').replace('и́онова', 'ионова')
 
@@ -83,6 +98,7 @@ url = [['ОРГ 1.2', 'https://docs.google.com/spreadsheets/d/1XQpCvLT5Nf-aQ8Mz-
        ['история россии и мира 15:30 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=1487346128'],
 
        ['история современных международных отношений 3.1', 'https://docs.google.com/spreadsheets/d/1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK/export?format=csv&id=1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK&gid=1753157777'],
+       ['история реформ и реформаторов 3.2', 'https://docs.google.com/spreadsheets/d/1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU/export?format=csv&id=1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU&gid=0'],
 
        ['менеджмент 1.1','https://docs.google.com/spreadsheets/d/1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms/export?format=csv&id=1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms&gid=0'],
        ['менеджмент 1.2','https://docs.google.com/spreadsheets/d/1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg/export?format=csv&id=1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg&gid=0'],
