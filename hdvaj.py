@@ -1,5 +1,6 @@
 import requests
 from telebot import *
+bot = telebot.TeleBot('TOKEN')
 
 
 def pars(url): #функция парсит таблицу
@@ -114,8 +115,6 @@ def z(predmet):
         if url[i][0]==predmet:
             return url[i][1]
     return predmet
-
-bot = telebot.TeleBot('8325763973:AAFOr4FwgtZTrXATle2tkqYBms_W7WAASNo')
 
 bot.delete_webhook()
 
