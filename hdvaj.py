@@ -1,5 +1,4 @@
 import requests
-from telebot import *
 
 def pars(url): #функция парсит таблицу
     url = f'{url}'
@@ -9,19 +8,10 @@ def pars(url): #функция парсит таблицу
     table = r.text.lower()
     return table
 
-def irs(table, chatid):
-    lastname = users[chatid]['name']
-    table=table.replace('сул́има', 'сулима').replace('и́онова', 'ионова')
+#ееврпрп
+#jhfhjksf
 
-    for a in table.split('\n'):
-        if lastname in a:
-
-            a = [a for a in a.split(',') if a != 'н']
-            return sum(int(a) for a in a[1:-1])
-
-    return 'ты не в этой группе'
-
-def englishb2(table, chatid):
+def english(table, chatid):
     lastname = users[chatid]['name']
     for a in table.split('\n'):
         if lastname in a:
@@ -97,9 +87,6 @@ url = [['ОРГ 1.2', 'https://docs.google.com/spreadsheets/d/1XQpCvLT5Nf-aQ8Mz-
        ['история россии и мира 13:30 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=332322934'],
        ['история россии и мира 15:30 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=1487346128'],
 
-       ['ИРС 3.1', 'https://docs.google.com/spreadsheets/d/1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK/export?format=csv&id=1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK&gid=1753157777'],
-       ['ИРР 3.2', 'https://docs.google.com/spreadsheets/d/1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU/export?format=csv&id=1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU&gid=0'],
-
        ['менеджмент 1.1','https://docs.google.com/spreadsheets/d/1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms/export?format=csv&id=1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms&gid=0'],
        ['менеджмент 1.2','https://docs.google.com/spreadsheets/d/1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg/export?format=csv&id=1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg&gid=0'],
        ['менеджмент 1.3','https://docs.google.com/spreadsheets/d/1JS8C1dBMrIqDKV6Or_iaoSasA7wnG67xNs72nlGuXtE/export?format=csv&id=1JS8C1dBMrIqDKV6Or_iaoSasA7wnG67xNs72nlGuXtE&gid=0'],
@@ -115,7 +102,9 @@ def z(predmet):
             return url[i][1]
     return predmet
 
-bot = telebot.TeleBot('TOKEN')
+from telebot import *
+
+bot = telebot.TeleBot('8325763973:AAFOr4FwgtZTrXATle2tkqYBms_W7WAASNo')
 
 bot.delete_webhook()
 
