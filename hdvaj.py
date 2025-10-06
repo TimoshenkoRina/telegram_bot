@@ -1,6 +1,6 @@
 import requests
 from telebot import *
-bot = telebot.TeleBot('TOKEN')
+bot = telebot.TeleBot('8325763973:AAFOr4FwgtZTrXATle2tkqYBms_W7WAASNo')
 
 
 def pars(url): #функция парсит таблицу
@@ -20,8 +20,8 @@ def english(table, chatid):
             a = a.split('"')
             s1 = float(a[0].count('1'))
             s2 = float(a[1].replace(',', '.'))
-            # s3 = float((a[4].split(',')[-2]).replace(',', '.'))
-            return s1 + s2
+            s3 = float((a[-1].split(',')[-2]).replace(',', '.'))
+            return s1 + s2 + s3
 
     return 'ты не в этой группе'
 
@@ -97,6 +97,7 @@ url = [['ОРГ 1.2', 'https://docs.google.com/spreadsheets/d/1XQpCvLT5Nf-aQ8Mz-
        ['история россии и мира 15:30 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=1487346128'],
 
        ['история современных международных отношений 3.1', 'https://docs.google.com/spreadsheets/d/1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK/export?format=csv&id=1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK&gid=1753157777'],
+
        ['история реформ и реформаторов 3.2', 'https://docs.google.com/spreadsheets/d/1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU/export?format=csv&id=1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU&gid=0'],
 
        ['менеджмент 1.1','https://docs.google.com/spreadsheets/d/1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms/export?format=csv&id=1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms&gid=0'],
@@ -178,6 +179,19 @@ def IRS_Potok():
 
     markup = types.ReplyKeyboardMarkup(row_width=3)
     btn1 = types.KeyboardButton("ирс 3.1")
+    markup.add(btn1)
+    return markup
+
+def IRR_Potok():
+
+    markup = types.ReplyKeyboardMarkup(
+        resize_keyboard=True,      # автоматическое изменение размера
+        row_width=1,              # количество кнопок в строке
+        one_time_keyboard=True    # скрыть после использования
+    )
+
+    markup = types.ReplyKeyboardMarkup(row_width=3)
+    btn1 = types.KeyboardButton("ирр 3.2")
     markup.add(btn1)
     return markup
 
@@ -412,9 +426,9 @@ answers = {
     "Реформы и реформаторы": {
         "new": 1,
         "address": " реформ и реформаторов",
-        "answer": "Теперь выберите время начала практики",
-        "keyboard": "H_time",
-        "start": "history"
+        "answer": "Теперь выберите поток",
+        "keyboard": "IRR_Potok",
+        "start": "irr"
     },
     "Современные международные отношения": {
         "new": 1,
@@ -422,6 +436,13 @@ answers = {
         "answer": "Теперь выберите поток",
         "keyboard": "IRS_Potok",
         "start": "irs"
+    },
+
+    "ирр 3.2": {
+        "new": 2,
+        "address": " 3.2",
+        "answer": "Супер! вот ваши баллы:",
+        "start": "irr"
     },
 
     "ирс 3.1": {
@@ -533,6 +554,8 @@ def handle_reply_buttons(message):
             bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irs(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'english':
             bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(english(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+        elif answers[message.text]['start'] == 'irr':
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irr(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         bot.send_message(message.chat.id, 'Что дальше?', reply_markup=cho_hosh())
         return
 
@@ -554,5 +577,7 @@ def handle_reply_buttons(message):
         bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=E_B12_groups())
     elif answers[message.text]['keyboard'] == 'E_A2_groups':
         bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=E_A2_groups())
+    elif answers[message.text]['keyboard'] == 'IRR_Potok':
+        bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=IRR_Potok())
 
 bot.polling()
