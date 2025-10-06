@@ -82,7 +82,7 @@ url = [['ОРГ 1.2', 'https://docs.google.com/spreadsheets/d/1XQpCvLT5Nf-aQ8Mz-
        ['история россии и мира 13:30 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=332322934'],
        ['история россии и мира 15:30 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=1487346128'],
 
-       ['ИРС', 'https://docs.google.com/spreadsheets/d/1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK/export?format=csv&id=1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK&gid=1753157777'],
+       ['история современных международных отношений 3.1', 'https://docs.google.com/spreadsheets/d/1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK/export?format=csv&id=1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK&gid=1753157777'],
 
        ['менеджмент 1.1','https://docs.google.com/spreadsheets/d/1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms/export?format=csv&id=1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms&gid=0'],
        ['менеджмент 1.2','https://docs.google.com/spreadsheets/d/1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg/export?format=csv&id=1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg&gid=0'],
@@ -327,17 +327,17 @@ answers = {
     },
     "Современные международные отношения": {
         "new": 1,
-        "address": " современные международные отношения",
+        "address": " современных международных отношений",
         "answer": "Теперь выберите поток",
         "keyboard": "IRS_Potok",
-        "start": "history"
+        "start": "irs"
     },
 
     "ирс 3.1": {
         "new": 2,
         "address": " 3.1",
         "answer": "Супер! вот ваши баллы:",
-        "start": "history"
+        "start": "irs"
     },
 
     "8:10":  {
@@ -433,11 +433,13 @@ def handle_reply_buttons(message):
             return
 
         if answers[message.text]['start'] == 'org':
-            bot.send_message(message.chat.id, 'Супер! вот ваши баллы:' + f' {(org(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(org(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'menegment':
-            bot.send_message(message.chat.id, 'Супер! вот ваши баллы:' + f' {(menedgment(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(menedgment(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'history':
-            bot.send_message(message.chat.id, 'Супер! вот ваши баллы:' + f' {(history(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(history(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+        elif answers[message.text]['start'] == 'irs':
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irs(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         bot.send_message(message.chat.id, 'Что дальше?', reply_markup=cho_hosh())
         return
 
