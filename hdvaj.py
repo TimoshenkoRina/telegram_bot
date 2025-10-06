@@ -1,7 +1,6 @@
 import requests
 from telebot import *
 
-
 def pars(url): #функция парсит таблицу
     url = f'{url}'
     s = requests.Session()
@@ -19,8 +18,8 @@ def english(table, chatid):
             a = a.split('"')
             s1 = float(a[0].count('1'))
             s2 = float(a[1].replace(',', '.'))
-            # s3 = float((a[4].split(',')[-2]).replace(',', '.'))
-            return s1 + s2
+            s3 = float((a[4].split(',')[-2]).replace(',', '.'))
+            return s1 + s2 + s3
 
     return 'ты не в этой группе'
 
@@ -34,7 +33,6 @@ def history(table, chatid):
 
     return 'ты не в этой группе'
 
-
 def irr(table, chatid):
     lastname = users[chatid]['name']
     for a in table.split('\n'):
@@ -47,7 +45,6 @@ def irr(table, chatid):
             return sum
 
     return 'ты не в этой группе'
-
 
 def irs(table, chatid): #история современных международных отношений
     lastname = users[chatid]['name']
@@ -106,8 +103,8 @@ url = [['ОРГ 1.2', 'https://docs.google.com/spreadsheets/d/1XQpCvLT5Nf-aQ8Mz-
        ['менеджмент 1.4','https://docs.google.com/spreadsheets/d/1RO9Z8TonVmE01S67zwRZbNY0TbeE21Z8ZXY5RQmn71c/export?format=csv&id=1RO9Z8TonVmE01S67zwRZbNY0TbeE21Z8ZXY5RQmn71c&gid=0'],
        ['менеджмент 1.5','https://docs.google.com/spreadsheets/d/1thf6a69OaRzbuxT76CQBgr1BGrQCq7OGy88ck3EBuaE/export?format=csv&id=1thf6a69OaRzbuxT76CQBgr1BGrQCq7OGy88ck3EBuaE&gid=0'],
 
-       ['английский B1.2 7','https://docs.google.com/spreadsheets/d/1hHUUdHhO7uMSr-kFrAed1NVeA2vD-2NNVqyJQCJ2X9w/export?format=csv&id=1hHUUdHhO7uMSr-kFrAed1NVeA2vD-2NNVqyJQCJ2X9w&gid=474547065'],
-       ['английский A2 d4','https://docs.google.com/spreadsheets/d/1XvdFQUgAZqOZ4onHpVUDGlw3jDKmhC_Gm7IV0cbPprE/export?format=csv&id=1XvdFQUgAZqOZ4onHpVUDGlw3jDKmhC_Gm7IV0cbPprE&gid=474547065']]
+       ['группа B12','https://docs.google.com/spreadsheets/d/1hHUUdHhO7uMSr-kFrAed1NVeA2vD-2NNVqyJQCJ2X9w/export?format=csv&id=1hHUUdHhO7uMSr-kFrAed1NVeA2vD-2NNVqyJQCJ2X9w&gid=474547065'],
+       ['группа A2 d4','https://docs.google.com/spreadsheets/d/1XvdFQUgAZqOZ4onHpVUDGlw3jDKmhC_Gm7IV0cbPprE/export?format=csv&id=1XvdFQUgAZqOZ4onHpVUDGlw3jDKmhC_Gm7IV0cbPprE&gid=474547065']]
 
 def z(predmet):
     for i in range(len(url)):
@@ -115,7 +112,7 @@ def z(predmet):
             return url[i][1]
     return predmet
 
-bot = telebot.TeleBot('8325763973:AAFOr4FwgtZTrXATle2tkqYBms_W7WAASNo')
+bot = telebot.TeleBot('token')
 
 bot.delete_webhook()
 
@@ -132,11 +129,9 @@ def lessons():
     btn1 = types.KeyboardButton("ОРГ")
     btn2 = types.KeyboardButton("Основы менеджмента")
     btn3 = types.KeyboardButton("История")
-    btn4 = types.KeyboardButton("Английский язык")
     markup.add(btn1)
     markup.add(btn2)
     markup.add(btn3)
-    markup.add(btn4)
     return markup
 
 def cho_hosh():
@@ -158,7 +153,7 @@ def H_Types():
 
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,      # автоматическое изменение размера
-        row_width=4,              # количество кнопок в строке
+        row_width=3,              # количество кнопок в строке
         one_time_keyboard=True    # скрыть после использования
     )
 
@@ -220,47 +215,6 @@ def H_time():
     markup.add(btn5)
     return markup
 
-def E_level():
-
-    markup = types.ReplyKeyboardMarkup(
-        resize_keyboard=True,      # автоматическое изменение размера
-        row_width=2,              # количество кнопок в строке
-        one_time_keyboard=True    # скрыть после использования
-    )
-
-    markup = types.ReplyKeyboardMarkup(row_width=3)
-    btn1 = types.KeyboardButton("B1.2")
-    btn2 = types.KeyboardButton("A2")
-    markup.add(btn1)
-    markup.add(btn2)
-    return markup
-
-def E_B12_groups():
-
-    markup = types.ReplyKeyboardMarkup(
-        resize_keyboard=True,      # автоматическое изменение размера
-        row_width=1,              # количество кнопок в строке
-        one_time_keyboard=True    # скрыть после использования
-    )
-
-    markup = types.ReplyKeyboardMarkup(row_width=3)
-    btn1 = types.KeyboardButton("B1.2 7")
-    markup.add(btn1)
-    return markup
-
-def E_A2_groups():
-
-    markup = types.ReplyKeyboardMarkup(
-        resize_keyboard=True,      # автоматическое изменение размера
-        row_width=1,              # количество кнопок в строке
-        one_time_keyboard=True    # скрыть после использования
-    )
-
-    markup = types.ReplyKeyboardMarkup(row_width=3)
-    btn1 = types.KeyboardButton("A2 d4")
-    markup.add(btn1)
-    return markup
-
 def potokiORG():
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,  # автоматическое изменение размера
@@ -318,41 +272,6 @@ answers = {
         "answer": "Теперь выберите раздел истории",
         "keyboard": "H_Types",
         "start": "history"
-    },
-    "Английский язык": {
-        "new": 0,
-        "address": "английский",
-        "answer": "Теперь выберите уровень английского языка",
-        "keyboard": "E_level",
-        "start": "english"
-    },
-
-    "B1.2": {
-        "new": 1,
-        "address": " B1.2",
-        "answer": "Теперь выберите группу",
-        "keyboard": "E_B12_groups",
-        "start": "english"
-    },
-    "A2": {
-        "new": 1,
-        "address": " A2",
-        "answer": "Теперь выберите группу",
-        "keyboard": "E_A2_groups",
-        "start": "english"
-    },
-
-    "A2 d4": {
-        "new": 2,
-        "address": " d4",
-        "answer": "Супер! вот ваши баллы:",
-        "start": "english"
-    },
-    "B1.2 7": {
-        "new": 2,
-        "address": " 7",
-        "answer": "Супер! вот ваши баллы:",
-        "start": "english"
     },
 
     "орг 1.2": {
@@ -534,8 +453,6 @@ def handle_reply_buttons(message):
             bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(history(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'irs':
             bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irs(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
-        elif answers[message.text]['start'] == 'english':
-            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(english(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         bot.send_message(message.chat.id, 'Что дальше?', reply_markup=cho_hosh())
         return
 
@@ -551,11 +468,5 @@ def handle_reply_buttons(message):
         bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=H_Teachers())
     elif answers[message.text]['keyboard'] == 'IRS_Potok':
         bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=IRS_Potok())
-    elif answers[message.text]['keyboard'] == 'E_level':
-        bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=E_level())
-    elif answers[message.text]['keyboard'] == 'E_B12_groups':
-        bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=E_B12_groups())
-    elif answers[message.text]['keyboard'] == 'E_A2_groups':
-        bot.send_message(message.chat.id, answers[message.text]['answer'], reply_markup=E_A2_groups())
 
 bot.polling()
