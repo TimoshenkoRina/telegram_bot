@@ -1,4 +1,5 @@
 import requests
+from telebot import *
 
 def pars(url): #функция парсит таблицу
     url = f'{url}'
@@ -113,8 +114,6 @@ def z(predmet):
         if url[i][0]==predmet:
             return url[i][1]
     return predmet
-
-from telebot import *
 
 bot = telebot.TeleBot('TOKEN')
 
