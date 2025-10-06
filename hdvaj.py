@@ -35,7 +35,6 @@ def history(table, chatid):
 
     return 'ты не в этой группе'
 
-
 def irr(table, chatid):
     lastname = users[chatid]['name']
     for a in table.split('\n'):
@@ -48,7 +47,6 @@ def irr(table, chatid):
             return sum
 
     return 'ты не в этой группе'
-
 
 def irs(table, chatid): #история современных международных отношений
     lastname = users[chatid]['name']
