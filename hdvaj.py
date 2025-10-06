@@ -18,7 +18,7 @@ def english(table, chatid):
             a = a.split('"')
             s1 = float(a[0].count('1'))
             s2 = float(a[1].replace(',', '.'))
-            s3 = float((a[4].split(',')[-2]).replace(',', '.'))
+            s3 = float((a[-1].split(',')[-2]).replace(',', '.'))
             return s1 + s2 + s3
 
     return 'ты не в этой группе'
