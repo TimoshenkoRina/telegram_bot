@@ -115,7 +115,7 @@ def z(predmet):
             return url[i][1]
     return predmet
 
-bot = telebot.TeleBot('8325763973:AAFOr4FwgtZTrXATle2tkqYBms_W7WAASNo')
+bot = telebot.TeleBot('token')
 
 bot.delete_webhook()
 
