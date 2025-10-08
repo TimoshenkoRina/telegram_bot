@@ -1,7 +1,6 @@
 import requests
 from telebot import *
-bot = telebot.TeleBot('8325763973:AAFOr4FwgtZTrXATle2tkqYBms_W7WAASNo')
-
+bot = telebot.TeleBot('TOKEN')
 
 def pars(url): #функция парсит таблицу
     url = f'{url}'
@@ -83,37 +82,34 @@ def menedgment(table, chatid):
 
     return 'ты не в этой группе'
 
-url = [['ОРГ 1.2', 'https://docs.google.com/spreadsheets/d/1XQpCvLT5Nf-aQ8Mz-3VYDw0uyk-8QVKv98gLKSEQg9A/export?format=csv&id=1XQpCvLT5Nf-aQ8Mz-3VYDw0uyk-8QVKv98gLKSEQg9A&gid=0'],
-       ['ОРГ 2.3', 'https://docs.google.com/spreadsheets/d/1DTkjRozRpijVK0Je9iZjLkpvbLAA-l6-WGnktJGlraU/export?format=csv&id=1DTkjRozRpijVK0Je9iZjLkpvbLAA-l6-WGnktJGlraU&gid=0'],
-       ['ОРГ 2.1', 'https://docs.google.com/spreadsheets/d/1q9spgoTIUEbpwTqBuY5ml-Q5tSmDpuHTMx2QJnIZIBk/export?format=csv&id=1q9spgoTIUEbpwTqBuY5ml-Q5tSmDpuHTMx2QJnIZIBk&gid=0'],
+url = {'ОРГ 1.2': 'https://docs.google.com/spreadsheets/d/1XQpCvLT5Nf-aQ8Mz-3VYDw0uyk-8QVKv98gLKSEQg9A/export?format=csv&id=1XQpCvLT5Nf-aQ8Mz-3VYDw0uyk-8QVKv98gLKSEQg9A&gid=0',
+       'ОРГ 2.3': 'https://docs.google.com/spreadsheets/d/1DTkjRozRpijVK0Je9iZjLkpvbLAA-l6-WGnktJGlraU/export?format=csv&id=1DTkjRozRpijVK0Je9iZjLkpvbLAA-l6-WGnktJGlraU&gid=0',
+       'ОРГ 2.1': 'https://docs.google.com/spreadsheets/d/1q9spgoTIUEbpwTqBuY5ml-Q5tSmDpuHTMx2QJnIZIBk/export?format=csv&id=1q9spgoTIUEbpwTqBuY5ml-Q5tSmDpuHTMx2QJnIZIBk&gid=0',
 
-       ['история россии и мира 8:10 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=132554553'],
-       ['история россии и мира 8:10 Пригодич','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=0'],
-       ['история россии и мира 11:30 Пригодич','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=1821313907'],
-       ['история россии и мира 15:30 Пригодич','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=605593543'],
-       ['история россии и мира 9:50 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=669992992'],
-       ['история россии и мира 11:30 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=517652382'],
-       ['история россии и мира 13:30 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=332322934'],
-       ['история россии и мира 15:30 Павловская','https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=1487346128'],
+       'история россии и мира 8:10 Павловская':'https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=132554553',
+       'история россии и мира 8:10 Пригодич':'https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=0',
+       'история россии и мира 11:30 Пригодич':'https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=1821313907',
+       'история россии и мира 15:30 Пригодич':'https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=605593543',
+       'история россии и мира 9:50 Павловская':'https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=669992992',
+       'история россии и мира 11:30 Павловская':'https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=517652382',
+       'история россии и мира 13:30 Павловская':'https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=332322934',
+       'история россии и мира 15:30 Павловская':'https://docs.google.com/spreadsheets/d/1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI/export?format=csv&id=1re6oAKcCWZPF1clxEKoffyu3zZgTiSQ5Zq-YAo0vzrI&gid=1487346128',
 
-       ['история современных международных отношений 3.1', 'https://docs.google.com/spreadsheets/d/1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK/export?format=csv&id=1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK&gid=1753157777'],
+       'история современных международных отношений 3.1': 'https://docs.google.com/spreadsheets/d/1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK/export?format=csv&id=1ZnR6uFz1t_uCdMLAMYRPaT8CpsQB8ALK&gid=1753157777',
 
-       ['история реформ и реформаторов 3.2', 'https://docs.google.com/spreadsheets/d/1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU/export?format=csv&id=1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU&gid=0'],
+       'история реформ и реформаторов 3.2': 'https://docs.google.com/spreadsheets/d/1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU/export?format=csv&id=1AVP0_usl0u4d1VJ-W9dY83Z9XDXrfklK_OlxNc3oEbU&gid=0',
 
-       ['менеджмент 1.1','https://docs.google.com/spreadsheets/d/1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms/export?format=csv&id=1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms&gid=0'],
-       ['менеджмент 1.2','https://docs.google.com/spreadsheets/d/1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg/export?format=csv&id=1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg&gid=0'],
-       ['менеджмент 1.3','https://docs.google.com/spreadsheets/d/1JS8C1dBMrIqDKV6Or_iaoSasA7wnG67xNs72nlGuXtE/export?format=csv&id=1JS8C1dBMrIqDKV6Or_iaoSasA7wnG67xNs72nlGuXtE&gid=0'],
-       ['менеджмент 1.4','https://docs.google.com/spreadsheets/d/1RO9Z8TonVmE01S67zwRZbNY0TbeE21Z8ZXY5RQmn71c/export?format=csv&id=1RO9Z8TonVmE01S67zwRZbNY0TbeE21Z8ZXY5RQmn71c&gid=0'],
-       ['менеджмент 1.5','https://docs.google.com/spreadsheets/d/1thf6a69OaRzbuxT76CQBgr1BGrQCq7OGy88ck3EBuaE/export?format=csv&id=1thf6a69OaRzbuxT76CQBgr1BGrQCq7OGy88ck3EBuaE&gid=0'],
+       'менеджмент 1.1':'https://docs.google.com/spreadsheets/d/1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms/export?format=csv&id=1unVwdDM0pBJEUeO6tCCZowzM8at2Db4HCVz_8zpEJms&gid=0',
+       'менеджмент 1.2':'https://docs.google.com/spreadsheets/d/1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg/export?format=csv&id=1BVhEkOZ7Yp7AuVSLIYAg9al3FVcBepVG76z2hDqm7Pg&gid=0',
+       'менеджмент 1.3':'https://docs.google.com/spreadsheets/d/1JS8C1dBMrIqDKV6Or_iaoSasA7wnG67xNs72nlGuXtE/export?format=csv&id=1JS8C1dBMrIqDKV6Or_iaoSasA7wnG67xNs72nlGuXtE&gid=0',
+       'менеджмент 1.4':'https://docs.google.com/spreadsheets/d/1RO9Z8TonVmE01S67zwRZbNY0TbeE21Z8ZXY5RQmn71c/export?format=csv&id=1RO9Z8TonVmE01S67zwRZbNY0TbeE21Z8ZXY5RQmn71c&gid=0',
+       'менеджмент 1.5':'https://docs.google.com/spreadsheets/d/1thf6a69OaRzbuxT76CQBgr1BGrQCq7OGy88ck3EBuaE/export?format=csv&id=1thf6a69OaRzbuxT76CQBgr1BGrQCq7OGy88ck3EBuaE&gid=0',
 
-       ['английский B1.2 7','https://docs.google.com/spreadsheets/d/1hHUUdHhO7uMSr-kFrAed1NVeA2vD-2NNVqyJQCJ2X9w/export?format=csv&id=1hHUUdHhO7uMSr-kFrAed1NVeA2vD-2NNVqyJQCJ2X9w&gid=474547065'],
-       ['английский A2 d4','https://docs.google.com/spreadsheets/d/1XvdFQUgAZqOZ4onHpVUDGlw3jDKmhC_Gm7IV0cbPprE/export?format=csv&id=1XvdFQUgAZqOZ4onHpVUDGlw3jDKmhC_Gm7IV0cbPprE&gid=474547065']]
+       'английский B1.2 7':'https://docs.google.com/spreadsheets/d/1hHUUdHhO7uMSr-kFrAed1NVeA2vD-2NNVqyJQCJ2X9w/export?format=csv&id=1hHUUdHhO7uMSr-kFrAed1NVeA2vD-2NNVqyJQCJ2X9w&gid=474547065',
+       'английский A2 d4':'https://docs.google.com/spreadsheets/d/1XvdFQUgAZqOZ4onHpVUDGlw3jDKmhC_Gm7IV0cbPprE/export?format=csv&id=1XvdFQUgAZqOZ4onHpVUDGlw3jDKmhC_Gm7IV0cbPprE&gid=474547065'}
 
-def z(predmet):
-    for i in range(len(url)):
-        if url[i][0]==predmet:
-            return url[i][1]
-    return predmet
+def get_url(subject):
+    return url.get(subject)
 
 bot.delete_webhook()
 
@@ -137,7 +133,7 @@ def lessons():
     markup.add(btn4)
     return markup
 
-def cho_hosh():
+def restart():
 
     markup = types.ReplyKeyboardMarkup(
         resize_keyboard=True,      # автоматическое изменение размера
@@ -518,7 +514,7 @@ def save_username(message):
     users[chat_id]['name'] = name
     bot.send_message(chat_id,"Выберите предмет по которому хотите узнать баллы", reply_markup=lessons())
 
-# 5. Обработчик обычных кнопок
+
 @bot.message_handler(content_types=['text'])
 def handle_reply_buttons(message):
     if message.text == 'Выбрать предмет':
@@ -530,7 +526,7 @@ def handle_reply_buttons(message):
         return
 
     if message.text not in answers:
-        bot.send_message(message.chat.id, 'странные у тебя запросы какие-то, переделывай', reply_markup=cho_hosh())
+        bot.send_message(message.chat.id, 'странные у тебя запросы какие-то, переделывай', reply_markup=restart())
         return
 
     if answers[message.text]['new'] == 0:
@@ -540,23 +536,23 @@ def handle_reply_buttons(message):
     elif answers[message.text]['new'] == 2:
         users[message.chat.id]['fulladdress'] += answers[message.text]['address']
 
-        if z(users[message.chat.id]['fulladdress']) == users[message.chat.id]['fulladdress']:
-            bot.send_message(message.chat.id, 'Ты по моему перепутал, братанчик. Нет такой группы, иди лучше еще раз попробуй', reply_markup=cho_hosh())
+        if get_url(users[message.chat.id]['fulladdress']) == users[message.chat.id]['fulladdress']:
+            bot.send_message(message.chat.id, 'Ты по моему перепутал, братанчик. Нет такой группы, иди лучше еще раз попробуй', reply_markup=restart())
             return
 
         if answers[message.text]['start'] == 'org':
-            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(org(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(org(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'menegment':
-            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(menedgment(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(menedgment(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'history':
-            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(history(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(history(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'irs':
-            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irs(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irs(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'english':
-            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(english(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(english(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'irr':
-            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irr(pars(z(users[message.chat.id]['fulladdress'])), message.chat.id))}')
-        bot.send_message(message.chat.id, 'Что дальше?', reply_markup=cho_hosh())
+            bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irr(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
+        bot.send_message(message.chat.id, 'Что дальше?', reply_markup=restart())
         return
 
     if answers[message.text]['keyboard'] == 'potokiORG':
