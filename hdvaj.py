@@ -78,6 +78,8 @@ def menedgment(table, chatid):
 
         if lastname in a:
             a = a.split('"')
+            a=str(a)
+            a=a.split(',')
             return a[-2]
 
     return 'ты не в этой группе'
@@ -517,12 +519,13 @@ def save_username(message):
 
 @bot.message_handler(content_types=['text'])
 def handle_reply_buttons(message):
-    if message.text == 'Выбрать предмет':
-        bot.send_message(message.chat.id, "Выберите предмет по которому хотите узнать баллы", reply_markup=lessons())
-        return
     if message.text == 'Пройти авторизацию заново':
         bot.send_message(message.chat.id, "Введите фамилию и имя через пробел", reply_markup=types.ReplyKeyboardRemove())
         bot.register_next_step_handler(message, save_username)
+        return
+
+    if message.text == 'Выбрать предмет':
+        bot.send_message(message.chat.id, "Выберите предмет по которому хотите узнать баллы", reply_markup=lessons())
         return
 
     if message.text not in answers:
