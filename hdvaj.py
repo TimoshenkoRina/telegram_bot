@@ -541,22 +541,22 @@ def handle_reply_buttons(message):
             return
         ans = ''
         if answers[message.text]['start'] == 'org':
-            ans = f' {(org(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
+            ans = f'{(org(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
             # bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(org(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'menegment':
-            ans = f' {(menedgment(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
+            ans = f'{(menedgment(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
             # bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(menedgment(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'history':
-            ans = f' {(history(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
+            ans = f'{(history(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
             # bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(history(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'irs':
-            ans = f' {(irs(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
+            ans = f'{(irs(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
             # bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irs(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'english':
-            ans = f' {(english(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
+            ans = f'{(english(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
             # bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(english(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         elif answers[message.text]['start'] == 'irr':
-            ans = f' {(irr(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
+            ans = f'{(irr(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}'
             # bot.send_message(message.chat.id, answers[message.text]['answer'] + f' {(irr(pars(get_url(users[message.chat.id]['fulladdress'])), message.chat.id))}')
         if ans == 'ты не в этой группе':
             bot.send_message(message.chat.id, ans)
