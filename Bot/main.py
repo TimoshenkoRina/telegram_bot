@@ -1,5 +1,5 @@
 from config import TOKEN, answers
-from pars import pars, english, history, irr, irs, org, menedgment, get_url
+from pars import pars, english, history, irr, irs, org, menegment, get_url
 from keyboards import (
     lessons, restart, potokiORG, potokimenegment, H_Types, H_time, H_Teachers,
     IRS_Potok, E_level, E_B12_groups, E_A2_groups, IRR_Potok
@@ -60,7 +60,7 @@ def handle_reply_buttons(message):
         # сознаём ключи и кидаем в функцию с обработкой таблицы
         func_map = {
             'org': org,
-            'menegment': menedgment,
+            'menegment': menegment,
             'history': history,
             'irs': irs,
             'english': english,
@@ -87,7 +87,7 @@ def handle_reply_buttons(message):
 
         bot.send_message(chat_id, 'Что дальше?', reply_markup=restart())
         return
-    #дальше по то  й же схеме, только мы выбираем не предмет, а поток
+    #дальше по той же схеме, только мы выбираем не предмет, а поток
     keyb_map = {
         'potokiORG': potokiORG,
         'potokimenegment': potokimenegment,
